@@ -1,0 +1,16 @@
+{
+  "name": "hand-and-brain-chess-workspace",
+  "private": true,
+  "version": "1.0.0",
+  "description": "The workspace for the Hand and Brain Chess application",
+  "scripts": {
+    "dev:client": "pnpm --filter client dev",
+    "dev:server": "pnpm --filter server dev",
+    "build": "pnpm --filter \"./packages/*\" build",
+    "lint": "pnpm --filter \"./packages/*\" lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.11.0"
+}

@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@layer base {
+  html,
+  body,
+  #root {
+    @apply min-h-dvh w-full overflow-hidden;
+    margin: 0;
+    padding: 0;
+    background: #070911;
+  }
+}
