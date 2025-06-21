@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import logo from "@/assets/logo.svg";
-import type { Room, Player } from "../../../../server/src/models/types";
+import type { Room, Player } from "@shared/types/game.ts";
 
 interface HomeScreenProps {
   onJoinSuccess: (room: Room, player: Player) => void;
@@ -28,7 +28,6 @@ export default function HomeScreen({ onJoinSuccess }: HomeScreenProps) {
    * @param {React.ChangeEvent<HTMLInputElement>} e - The input change event.
    */
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // Modified regex to allow spaces (\s) in addition to uppercase letters (A-Z)
     const value = e.target.value.toUpperCase().replace(/[^A-Z\s]/g, "");
     setName(value);
   };
@@ -80,9 +79,14 @@ export default function HomeScreen({ onJoinSuccess }: HomeScreenProps) {
 
       console.log("Successfully joined room:", data);
       onJoinSuccess(data.room, data.player);
-    } catch (err: any) {
-      console.error("Failed to join room:", err);
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error("Failed to join room:", err);
+        setError(err.message);
+      } else {
+        console.error("Failed to join room:", err);
+        setError("An unknown error occurred.");
+      }
     }
   };
 

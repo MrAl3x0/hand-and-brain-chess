@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { roomService } from "../services/roomService";
+import { roomService } from "../services/roomService.js";
 
 /**
  * @controller joinRoomController

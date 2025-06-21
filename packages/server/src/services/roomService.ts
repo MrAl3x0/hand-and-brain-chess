@@ -1,4 +1,4 @@
-import { Room, Player } from "../models/types";
+import { Room, Player } from "@shared/types/game.js";
 import { randomUUID } from "crypto";
 
 /**
